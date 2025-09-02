@@ -1,4 +1,3 @@
-```markdown
 # 0G-HealthAI
 
 Welcome to **0G-HealthAI**, a decentralized AI-powered healthcare management application built on the 0G Modular Layer 1 blockchain. This project aims to revolutionize healthcare by making it a public good through secure, transparent, and intelligent data management using Next.js, Tailwind CSS, TypeScript, and 0G's innovative blockchain infrastructure.
