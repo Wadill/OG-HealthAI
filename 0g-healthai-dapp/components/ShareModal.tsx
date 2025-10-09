@@ -1,43 +1,59 @@
 "use client";
-
 import { useState } from "react";
+import { motion } from "framer-motion";
 
-export default function ShareModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const [recipient, setRecipient] = useState("");
+interface ShareModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onShare: (recipient: string) => void;
+  recipient: string;
+  setRecipient: (recipient: string) => void;
+}
 
-  const handleShare = () => {
-    alert(`Shared with ${recipient}! (Mock action)`);
-    onClose();
-  };
-
+export default function ShareModal({
+  isOpen,
+  onClose,
+  onShare,
+  recipient,
+  setRecipient,
+}: ShareModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-96">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">Share Record</h2>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    >
+      <motion.div
+        initial={{ scale: 0.9 }}
+        animate={{ scale: 1 }}
+        className="bg-white p-6 rounded-xl shadow-xl w-full max-w-md"
+      >
+        <h2 className="text-2xl font-semibold text-indigo-700 mb-4">Share Record</h2>
         <input
           type="text"
           value={recipient}
           onChange={(e) => setRecipient(e.target.value)}
-          placeholder="Enter recipient address or name..."
-          className="w-full p-2 border border-gray-300 rounded mb-4"
+          placeholder="Recipient (e.g., Dr. Smith)"
+          className="w-full p-2 border border-gray-300 rounded-lg mb-4"
         />
         <div className="flex justify-end space-x-4">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-gray-600 hover:text-gray-800"
+            className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
           >
             Cancel
           </button>
           <button
-            onClick={handleShare}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            onClick={() => onShare(recipient)}
+            className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition duration-300"
           >
             Share
           </button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

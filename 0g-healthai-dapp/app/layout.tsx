@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans"; // Import the GeistSans configuration
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-// Initialize GeistSans with options
-const geistSans = GeistSans({
-  variable: "--font-geist-sans", // CSS variable name
-  subsets: ["latin"], // Load only Latin subset for optimization
-  // Weight range is automatically included (100–900)
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={geistSans.variable}> {/* Attach the variable to className */}
+    <html lang="en" className={inter.variable}>
       <body>{children}</body>
     </html>
   );

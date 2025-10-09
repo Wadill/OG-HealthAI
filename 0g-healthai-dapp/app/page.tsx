@@ -1,8 +1,12 @@
-import { motion } from "framer-motion"; // For animations (install with: npm install framer-motion)
+"use client"; 
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Navbar from "@/components/Navbar"; 
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      <Navbar /> {/* Add Navbar at the top */}
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">
         <motion.h1
@@ -21,6 +25,16 @@ export default function Home() {
         >
           Revolutionizing healthcare with decentralized AI power.
         </motion.p>
+        <Link href="/dashboard">
+          <motion.button
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 text-lg font-semibold"
+          >
+            Get Started
+          </motion.button>
+        </Link>
       </section>
 
       {/* Content Sections */}
@@ -98,10 +112,8 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white text-center py-6">
-        <p>&copy; {new Date().getFullYear()} 0G-HealthAI by Wadill. All rights reserved.</p>
-        <p className="mt-2 text-sm">
-          Submitted at 08:32 AM WAT, Thursday, September 11, 2025.
-        </p>
+        <p>&copy; {new Date().getFullYear()} 0G-HealthAI </p>
+        
       </footer>
     </div>
   );

@@ -1,42 +1,21 @@
 "use client";
-
-import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface RecordCardProps {
-  id: number;
-  date: string;
   type: string;
-  details: string;
+  date: string;
+  status: string;
 }
 
-export default function RecordCard({ id, date, type, details }: RecordCardProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
+export default function RecordCard({ type, date, status }: RecordCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300">
-      <div className="flex justify-between items-center">
-        <div>
-          <h3 className="text-lg font-semibold text-gray-800">{type}</h3>
-          <p className="text-sm text-gray-500">{date}</p>
-        </div>
-        <button
-          onClick={() => setIsOpen(true)}
-          className="text-blue-600 hover:text-blue-800"
-        >
-          View
-        </button>
-      </div>
-      {isOpen && (
-        <div className="mt-2 p-2 bg-gray-50 rounded">
-          <p className="text-gray-700">{details}</p>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="mt-2 text-red-600 hover:text-red-800"
-          >
-            Close
-          </button>
-        </div>
-      )}
-    </div>
+    <motion.div
+      whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+      className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300 border border-teal-100"
+    >
+      <h3 className="text-lg font-semibold text-teal-600">{type}</h3>
+      <p className="text-gray-600">Date: {date}</p>
+      <p className="text-gray-600">Status: {status}</p>
+    </motion.div>
   );
 }
