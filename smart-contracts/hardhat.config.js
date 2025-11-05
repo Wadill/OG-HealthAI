@@ -1,31 +1,27 @@
 require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config();
 
-const privateKey = process.env.PRIVATE_KEY;
-const rpcUrl = process.env.RPC_URL;
-
-if (!privateKey) {
-  console.warn("Please set your PRIVATE_KEY in the .env file");
-}
-if (!rpcUrl) {
-  console.warn("Please set your RPC_URL in the .env file");
-}
-
-/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.24",
   networks: {
-    hardhat: {
-      // Configuration for the local Hardhat Network
-    },
-    og_testnet_v3: {
-      url: rpcUrl || "", // Fallback to empty string if not set
-      accounts: privateKey ? [`0x${privateKey}`] : [], // Add 0x prefix
-      chainId: 16601, // Updated Chain ID for 0G Testnet V3
+    og_testnet: {
+      url: "https://evmrpc-testnet.0g.ai",
+      chainId: 16600,
+      accounts: [process.env.PRIVATE_KEY],
     },
   },
-  // Optional: Specify etherscan API key if verification is needed later
-  // etherscan: {
-  //   apiKey: process.env.ETHERSCAN_API_KEY
-  // }
+  etherscan: {
+    apiKey: {
+      og_testnet: "abc", // placeholder
+    },
+    customChains: [
+      {
+        network: "og_testnet",
+        chainId: 16600,
+        urls: {
+          apiURL: "https://explorer.0g.ai/api",
+          browserURL: "https://explorer.0g.ai",
+        },
+      },
+    ],
+  },
 };
