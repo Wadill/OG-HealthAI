@@ -4,6 +4,10 @@ Welcome to **0G-HealthAI**, a decentralized AI-powered healthcare management app
 
 - **Repository**: [https://github.com/Wadill/OG-HealthAI](https://github.com/Wadill/OG-HealthAI)
 
+🚀 0G-HealthAI LIVE on MAINNET!
+Contract: 0x1F0441f4aD7ddAf44187F780afc6AacdC270Bba7
+Explorer: https://explorer.0g.ai/address/ 0x1F0441f4aD7ddAf44187F780afc6AacdC270Bba7
+
 ## What it Does
 0G-HealthAI empowers patients and healthcare providers with a decentralized platform to store encrypted medical records, access AI-driven diagnostics, and share data securely via Intelligent NFTs (INFTs). It leverages 0G's modular services to ensure privacy, verifiability, and scalability.
 
